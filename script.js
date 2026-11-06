@@ -8,35 +8,77 @@ const perguntas = [
 {
     enunciado: "Assim que Elfhaba entra na escola, as pessoas possuem uma reação espantosa",
     alternativas: [
-        "Que deslumbrante!",
-        "Ela é verde? Isso é horripilante"
+        {
+        texto:"Que deslumbrante!",
+        afirmacao:"afirmacao"
+        },
+        {
+        texto:"Ela é verde? Isso é horripilante",
+        afirmacao:"afirmacao"
+
+        }
     ]
 },
         {
     enunciado: "Ela pensa que não se importa com nenhum tipo de comentário, você ajuda ela?",
     alternativas: [
-        "Sim",
-        "Não"
+        {
+        texto:"Sim",
+        afirmacao:"afirmacao"
+        },
+        {
+        texto:"Não",
+        afirmacao:"afirmacao"
+
+        }
     ]
 },
 
 {
-    enunciado: "Pergunta 1",
+    enunciado: "Pergunta 3",
     alternativas: [
-        "Alternativa 1",
-        "Aternativa 2"
+        {
+        texto:"Com certeza!",
+        afirmacao:"afirmacao"
+        },
+        {
+        texto:"Claro que não!",
+        afirmacao:"afirmacao"
+
+        }
     ]
 },
 
 {
-    enunciado: "Pergunta 1",
+    enunciado: "Pergunta 4",
     alternativas: [
-        "Alternativa 1",
-        "Aternativa 2"
+        {
+        texto:"Sim!",
+        afirmacao:"afirmacao"
+        },
+        {
+        texto:"NUNCA!",
+        afirmacao:"afirmacao"
+
+        }
+    ]
+},
+
+{
+    enunciado: "Pergunta 5",
+    alternativas: [
+        {
+        texto:"Que deslumbrante!",
+        afirmacao:"afirmacao"
+        },
+        {
+        texto:"Isso é horripilante",
+        afirmacao:"afirmacao"
+
+        }
     ]
 },
        
-
 ];
 
 let atual = 0;
@@ -45,4 +87,19 @@ let perguntaAtual;
 function mostraPergunta () {
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
 }
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativa.textContent = alternativa.texto;
+        botaoAlternativa.addEventListener("click", function(){
+            atual++,
+            mostraPergunta();
+        })
+        caixaAlternativas.appendChild(botaoAlternativa);
+    }
+}
+
+mostraPergunta();
